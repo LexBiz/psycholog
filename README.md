@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Production-ready landing page for the online mini-course:
+
+«Як пережити розрив стосунків і повернутись до нормального життя»
+
+Built with **Next.js (App Router)** + **TypeScript** + **Tailwind CSS** + **Framer Motion**.
 
 ## Getting Started
 
-First, run the development server:
+### Run locally
+
+Install deps and run the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Configuration (optional)
 
-To learn more about Next.js, take a look at the following resources:
+See `env.example` and copy values into your environment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `NEXT_PUBLIC_SITE_URL`: used for metadataBase + sitemap + robots
+- `NEXT_PUBLIC_GA_ID`: Google Analytics ID (optional)
+- `NEXT_PUBLIC_META_PIXEL_ID`: Meta Pixel ID (optional)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+- `src/content/landingContent.ts`: **single source of truth** for all landing copy (kept as-is from the content document)
+- `src/components/sections/*`: each landing block = one component
+- `src/components/ui/*`: reusable UI primitives (Button/Section/Reveal/etc.)
+- `src/app/api/lead`: lead form handler (stub for webhook/CRM)
+- `src/app/api/pay/wayforpay`: WayForPay stub (TODO for real integration)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- No aggressive UX patterns (no timers / scarcity banners).
+- Video sections are implemented with placeholders; plug in real `videoSrc` / `posterSrc` later.
+
+- `src/components/sections/*`: each landing block = one component
+- `src/components/ui/*`: reusable UI primitives (Button/Section/Reveal/etc.)
+- `src/app/api/lead`: lead form handler (stub for webhook/CRM)
+- `src/app/api/pay/wayforpay`: WayForPay stub (TODO for real integration)
+
+## Notes
+
+- No aggressive UX patterns (no timers / scarcity banners).
+- Video sections are implemented with placeholders; plug in real `videoSrc` / `posterSrc` later.
